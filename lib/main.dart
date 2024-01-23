@@ -4,11 +4,15 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Scaffold(
-      body: LifeGame(),
+  runApp(
+    MaterialApp(
+      home: Scaffold(body: LifeGame()),
+      title: "Life Game",
+      theme: ThemeData(
+        fontFamily: "Mi Sans",
+      ),
     ),
-  ));
+  );
 }
 
 class LifeGame extends StatefulWidget {
@@ -162,15 +166,15 @@ class LifeGameState extends State<LifeGame> {
             children: [
               Expanded(
                 flex: 1,
-                child: ElevatedButton(onPressed: run, child: Text("Run")),
+                child: ElevatedButton(onPressed: run, child: Text("运行")),
               ),
               Expanded(
                 flex: 1,
-                child: ElevatedButton(onPressed: stop, child: Text("Stop")),
+                child: ElevatedButton(onPressed: stop, child: Text("暂停")),
               ),
               Expanded(
                 flex: 1,
-                child: ElevatedButton(onPressed: evolve, child: Text("Evolve")),
+                child: ElevatedButton(onPressed: evolve, child: Text("单步")),
               ),
             ],
           ),
@@ -179,8 +183,7 @@ class LifeGameState extends State<LifeGame> {
           width: (len * siz).toDouble(),
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Expanded(
-                child:
-                    ElevatedButton(onPressed: revoke, child: Text("Revoke"))),
+                child: ElevatedButton(onPressed: revoke, child: Text("随机"))),
             Expanded(
               child: ElevatedButton(
                   onPressed: () {
@@ -188,7 +191,7 @@ class LifeGameState extends State<LifeGame> {
                       isDrawing = !isDrawing;
                     });
                   },
-                  child: Text(isDrawing ? "Drawing" : "Draw")),
+                  child: Text(isDrawing ? "作画中" : "作画")),
             ),
             Expanded(
               child: ElevatedButton(
@@ -197,7 +200,7 @@ class LifeGameState extends State<LifeGame> {
                       generate((idx) => false);
                     });
                   },
-                  child: Text("Clear")),
+                  child: Text("清空")),
             )
           ]),
         ),
